@@ -7,6 +7,13 @@ from qdrant_client import QdrantClient
 from dotenv import dotenv_values
 
 env = dotenv_values(".env")
+### Secrets using Streamlit Cloud Mechanism
+# https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
+if 'QDRANT_URL' in st.secrets:
+    env['QDRANT_URL'] = st.secrets['QDRANT_URL']
+if 'QDRANT_API_KEY' in st.secrets:
+    env['QDRANT_API_KEY'] = st.secrets['QDRANT_API_KEY']
+##
 
 MODEL_NAME = 'welcome_survey_clustering_pipeline_v2'
 
